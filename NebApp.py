@@ -13,7 +13,7 @@ from kivy.clock import Clock
 from aiclass import gamestructure
 
 
-lsb = [2,2,2,3,3,3]
+
 
 player = ''
 
