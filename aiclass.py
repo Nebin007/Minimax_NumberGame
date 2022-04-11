@@ -1,15 +1,25 @@
+import random
+from itertools import repeat
 class gamestructure:
+    numstring = []
+    score = []
     #class core
     def __init__(self):
-        self.numstring = [2,2,2,3,3,3,3]
-        self.score = [11,11] #[max,min]
+        self.numstring.clear()
+        for x in range(7): self.numstring.append(random.randint(1,7))
+        self.score.clear()
+        k = sum(self.numstring) - random.randint(4,6)
+        for x in range(2): self.score.append(k)
     
     def __str__(self):
         return '[Comp: '+str(self.score[0])+', '+str(self.numstring)+', Player: '+str(self.score[1])
     
     def restetparm(self):
-        self.numstring = [2,2,2,3,3,3,3]
-        self.score = [11,11] #[max,min]
+        self.numstring.clear()
+        for x in range(7): self.numstring.append(random.randint(1,7))
+        self.score.clear()
+        k = sum(self.numstring) - random.randint(4,6)
+        for x in range(2): self.score.append(k)
     
     #Member functions
     def printdet(self):
@@ -65,6 +75,7 @@ class gamestructure:
             self.gamestate(player,num)
     
     def minimax(self, isMaxi):
+        
         print(self)
         if self.whowon(1):
             return 1
@@ -83,6 +94,7 @@ class gamestructure:
                 self.score[0] = self.score[0] + num
                 if(score > bestscore):
                     bestscore = score
+            print("The current level is: "+str(bestscore))
             return bestscore
         else:
             bestscore = 10
@@ -94,8 +106,5 @@ class gamestructure:
                 self.score[1] = self.score[1] + num
                 if(score > bestscore):
                     bestscore = score
+            print("The current level is: "+str(bestscore))
             return bestscore
-
-
-
-
